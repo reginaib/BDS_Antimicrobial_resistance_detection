@@ -48,12 +48,14 @@ def optimize_sweep():
 
 
 def start_sweep(config, project_name, num_config=15):
-    wandb.login(key='fd8f6e44f8d81be3a652dbd8f4a47a7edf59e44c')
+    # add your wandb key below
+    wandb.login(key='...')
     sweep_id = wandb.sweep(config, project=project_name)
     wandb.agent(sweep_id=sweep_id, function=optimize_sweep, count=num_config)
     
 
 def start_training(config, project_name):
-    wandb.login(key='fd8f6e44f8d81be3a652dbd8f4a47a7edf59e44c')
+    # add your wandb key below
+    wandb.login(key='...')
     logger = WandbLogger(project=project_name, job_type='train', log_model='all')
     initialize_model(config, logger)
